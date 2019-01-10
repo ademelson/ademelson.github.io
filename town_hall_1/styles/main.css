@@ -1,0 +1,201 @@
+/*======================== The Styles For The Reset Selector ======================*/
+*{
+	padding: 0;
+	margin: 0;
+}
+
+/*========================= The Styles For The html Element =======================*/
+
+html{
+	background-color: white;
+}
+
+/*========================= The Styles For The body Element =======================*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    width: 800px; 
+	margin: 0 auto;
+	border: 3px solid #931420;
+	background-color: #fffded;
+}
+
+/*========================= The Styles For Any <a> Element ========================*/
+a:focus, a:hover {
+	font-style: italic;
+}
+
+/*======================== The Styles For The header Element ======================*/
+header {
+	border-bottom: 3px solid #931420;
+	padding: 1.5em 0 2em;
+	background-image: linear-gradient(30deg, #f6bb73 0%, #f6bb73 30%, white 50%, #f6bb73 80%, #f6bb73 100%);
+}
+header img {
+	float: left;
+	padding: 0 30px;
+}
+
+header h2 {
+	font-size: 170%;
+	color: #800000;
+}
+
+header h3 {
+	font-size: 130%;
+	font-style: italic;
+}
+
+.shadow {
+	text-shadow: 1.5px 1.5px #800000;
+}
+
+
+/*========================= The Styles For The nav Element ========================*/
+#nav_menu ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	display: flow-root;
+}
+
+#nav_menu ul li{
+	float: left;
+}
+
+#nav_menu ul li a{
+	display: block;
+	width: 160px;
+	text-align: center;
+	padding: 1em 0;
+	text-decoration: none;
+	background-color: #800000;
+	color: white;
+	font-weight: bold;
+}
+
+#nav_menu ul li a.current{
+	color: yellow;
+}
+
+#nav_menu ul ul{
+	display: none;
+	position: absolute;
+	top: 100%;	
+}
+
+#nav_menu ul ul li{
+	float: none;
+}
+
+#nav_menu ul li:hover > ul{
+	display: block;
+}
+
+/*
+#nav_menu > ul::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+*/
+/*========================= The Styles For The main Element =======================*/
+main {
+	clear: left;
+}
+
+/*------------------------- The Styles For The section Element --------------------*/
+section{
+	width: 525px;
+	float: right;
+	padding: 0 20px 20px;
+}
+
+section h1{
+	font-size: 150%;
+	padding: 0.5em 0 0.25em 0;
+	margin: 0;
+}
+
+section h2 {
+	font-size: 130%;
+	color: #800000;
+	padding: 0.5em 0 0.25em;
+}
+
+section p{
+	padding-bottom: 0.5em;
+}
+
+section blockquote{
+	padding: 0 2em;
+	font-style: italic;
+}
+
+section ul{
+	padding: 0 0 0.25em 1.25em;
+}
+
+section li{
+	padding-bottom: 0.35em;
+}
+
+section ul{
+	list-style-type: circle;
+}
+
+section article{
+	padding: 0.5em 0;
+	border-top: 2px solid #800000;
+	border-bottom: 2px solid #800000;
+}
+
+section article img{
+	float: right;
+	margin: 0.5em 0 1.5em 1.5em;
+	border: 1px solid black;
+}
+
+section article h2{
+	padding-top: 0;
+}
+
+section article h3{
+	font-size: 105%;
+	padding-bottom: 0.25em;
+}
+
+/*------------------------ The Styles For The aside Element -----------------------*/
+aside{
+	width: 215px;
+	float: right;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
+aside h2 {
+	font-size: 130%;
+	color: #800000;
+	padding: 0.5em 0 0.25em;
+}
+
+aside h3 {
+	font-size: 105%;
+	padding-bottom: 0.25em;
+}
+
+aside img{
+	padding-bottom: 1em;
+}
+
+/*========================== The Styles For The footer Element ====================*/
+footer{
+	background-color: #931420;
+	clear: both;
+}
+footer p {
+	text-align: center;
+	color: white;
+	padding: 1em 0;
+}
