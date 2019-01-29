@@ -1,0 +1,50 @@
+/*		
+		Class: CIS-128 (Mobile Web Design)
+		Term: Spring 2019
+		Student Name: Attoni B. Demel
+		Student ID: G00937027
+		Student Email: attondemel@my.smccd.edu
+		Homework #: 1
+		File Name: Attoni_Demel_Homework1.css
+		Homework Objectives: Simple HTML & CSS Page
+		Due Date: Monday, January 28, 2019	
+*/
+
+/* Universal selector styling */
+*{
+	padding: 0;
+	margin: 0;
+}
+
+/* Styling for the body element. It is centered */
+body{
+	width: 75%;
+	margin: 2em auto;
+	padding: 1em;
+	border: 2px solid blue;
+}
+
+/* Image (Attoni's picture) is floated to the left */
+img{
+	width: 250px;
+	height: 250px;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	float: left;
+}
+
+/* Second paragraph following the image is cleared */
+#reasons{
+	clear: both;
+}
+
+/* All h1 & h2 elements are centered */
+h1,h2{
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+/* Make the bullet points of the li elements be part of the li */
+ul{
+	list-style-position: inside;
+}
