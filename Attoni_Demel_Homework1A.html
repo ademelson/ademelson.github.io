@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<!--
+		Class: CIS-128 (Mobile Web Design)
+		Term: Spring 2019
+		Student Name: Attoni B. Demel
+		Student ID: G00937027
+		Student Email: attondemel@my.smccd.edu
+		Homework #: 1A
+		File Name: Attoni_Demel_Homework1A.html
+		Homework Objectives: Simple HTML & CSS Page / jQuery Animation
+		Due Date: Monday, February 11, 2019	
+	-->				
+		<meta charset="UTF-8" />
+		<meta name="description" content="Simple Animation With jQuery" />
+		<meta name="author" content="Attoni B. Demel" />
+		<title>Homework-1: Animation For Simple HTML &amp; CSS Page</title>
+		<link rel="stylesheet" href="Attoni_Demel_Homework1A.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	</head>
+	
+	<body>
+		<h1>Simple HTML &amp; CSS Page</h1>
+		<img src="attoni_picture.jpg" title="Picture For Attoni" alt="Picture For Attoni"/>
+		<p>My name is Attoni B. Demel. I have been taking CIS classes at SMCCD since last year.</p>
+		<p id="reasons">I am taking this class because have already previously taken several other CIS
+		   classes and I aim to further my skills in the field of web design. 
+		</p>
+		
+		<h2>Technologies For This Class:</h2>
+		<ul>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+		</ul>
+		
+		<h2>Resources:</h2>
+		<ul>
+			<li><a href="https://developer.mozilla.org" title="Mozilla" target="_blank">Mozilla Web Developers Site: </a>
+				<span>This is the Mozilla Web Developers site.</span>
+			</li>
+			<li><a href="https://developers.google.com/" title="Google" target="_blank">Google Web Developers Site: </a>
+				<span>This is the Official Google Web Developers site.</span>
+			</li>
+			<li><a href="https://www.w3schools.com/" title="W3 Schools" target="_blank">W3 Schools Site: </a>
+				<span>This site contains several tutorials about HTML, CSS, JavaScript, Etc.</span>
+			</li>
+		</ul>
+		
+		<button id="animation_button" title="Heading h1 Animation And Border Around Picture">Start Animation</button>
+		
+		<script>
+			$(document).ready(function(){
+				$("#animation_button").click(function(){
+					/* Two solutions have been provided to the changing of the text color of heading h1. The first solution
+					 * uses jQuery UI, since jQuery itself does not support text color in animation. The color goes from 
+					 * "black" to "green" and then "black" again during the animation. The second solution, uses jQuery 
+					 * method "toggleClass" to add the class attribute "change_color" to the h1 heading when it does not 
+					 * have it, and then remove it when it does have it. When h1 has the class attribute "change_color",
+					 * the text color become "magenta". The color reverses to "black", when the class is toggled. 
+					 */ 
+					 
+					// Solution 1: (Uncomment line below and comment out Solution-2 to see to test Solution-1)
+					// $("h1").animate({fontSize: "+=30", color: "green"},2000).animate({fontSize: "-=30", color: "black"},2000);
+					
+					// Solution 2: Using method chaining & callback to get the heading back to its original settings. 
+					$("h1").animate({fontSize: "+=30"},2000, function() {$(this).toggleClass("change_color")})
+					       .animate({fontSize: "-=30"},2000, function() {$(this).toggleClass("change_color")});
+					
+					$("img").css("border","6px onset brown");
+			    });
+			});
+		</script>
+	</body>	
+</html>
