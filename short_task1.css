@@ -1,0 +1,12 @@
+dt{
+    margin: 0.5em auto;
+    padding: 0.5em;
+    text-align: center;
+    border: 1px solid blue;
+    width: 80%
+}
+
+dd{
+    margin-bottom: 1em;
+    text-align: center;
+}
