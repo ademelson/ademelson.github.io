@@ -18,11 +18,11 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>                        
                     </button>
-                    <a class="navbar-brand" href="Attoni_Demel_Homework3.html">All In One</a>
+                    <a class="navbar-brand" href="Attoni_Demel_Homework4_Part1.html">All In One</a>
                 </div>    
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">   
-                        <li><a href="Attoni_Demel_Homework3.html">Home</a></li>
+                        <li><a href="Attoni_Demel_Homework4_Part1.html">Home</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="products.html">Products</a></li>
                         <li class="active"><a href="location.html">Location</a></li>
@@ -33,11 +33,29 @@
 
         <div class="jumbotron">
             <h1>Company Location Information</h1>
-            <p>When we open our store, we will let you know about it on this page along with
-               direction information on how to get there. 
-            </p>
+            <p>Address: 707 Parnassus Avenue, San Francisoco, CA 94143</p>
+            <p id="latitude"></p>
+            <p id="longitude"></p>
         </div>
     </div>
+    <script>
+       navigator.geolocation.getCurrentPosition(processLocation,processErrorMessage);
+        
+       function processLocation(position)
+       {
+           let latitude = position.coords.latitude;
+           let longitude = position.coords.longitude;
+           document.getElementById("latitude").innerHTML = `Your Current Latitude Is: ${latitude}`;
+           document.getElementById("longitude").innerHTML = `Your Current Longitude Is: ${longitude}`;
+       }
+        
+       function processErrorMessage(error)
+       {
+       if(error.code == 1){alert('Position Access Request: User Denied');}
+       if(error.code == 2){alert('Position Access Request: Position Unavailable');}
+       if(error.code == 3){alert('Position Access Request: Timeout');}
+       }
+    </script>
 </body>
 </html>
 
