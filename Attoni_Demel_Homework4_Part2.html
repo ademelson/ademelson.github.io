@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About PWA: Progressive Web Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <h1>About PWA: Progressive Web Application</h1>
+    <p>There are three main features of a PWA. As you’ll see, what makes a web app progressive
+       is the “fixing” of problems typically associated with web apps, by adopting some of the
+       techniques used by native apps to resolve these issues. PWA sites are reliable, fast and
+       engaging. 
+    </p>
+    <label for="background_color">Select The Background Color:</label>
+    <select name="background_color">
+        <option value="light_blue">Light Blue</option>
+        <option value="light_gold">Light Gold</option>
+    </select>    
+  </div>
+  
+  <script>
+    if("serviceWorker" in navigator){
+      window.addEventListener('load',() => {
+        navigator.serviceWorker
+          .register('service-worker.js')
+          .then(reg => console.log(`Service Worker ${reg} | ${typeof reg}Now Registered`))
+          .catch(error => console.log(`Service Worker Error: ${error}`));
+      });
+    }
+  </script>
+
+</body>
+</html>
