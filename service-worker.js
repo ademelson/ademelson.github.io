@@ -35,6 +35,7 @@ self.addEventListener('fetch', event => {
 });
 */
 
+/*
 self.addEventListener('fetch',event => {
     console.log("================ Fetching Operation: ===================");
     event.respondWith(
@@ -48,8 +49,30 @@ self.addEventListener('fetch',event => {
         })
     );
 });
+*/
 
 /*
+self.addEventListener('fetch',event => {
+    console.log("================ Fetching Operation: ===================");
+    event.respondWith(
+        caches.match(event.request)
+        .then(response1 => {
+            console.log(`===== Service Worker: Fetching From Cache | Resource: ${event.request.url}`);
+            return response1 || fetch(event.request)
+        })
+    );
+});
+
+    });})
+        .catch( () => {
+            console.log(`===== Service Worker: Fetching From Network | Resource: ${event.request.url}`)
+            return fetch(event.request);
+        })
+    );
+});
+*/
+
+
 self.addEventListener('fetch', function(e) {
     e.respondWith(
       caches.match(e.request).then(function(r) {
@@ -64,4 +87,3 @@ self.addEventListener('fetch', function(e) {
       })
     );
   });
-  */
