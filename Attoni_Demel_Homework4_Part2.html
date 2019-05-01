@@ -27,15 +27,15 @@
     if("serviceWorker" in navigator){
       window.addEventListener('load',() => {
         navigator.serviceWorker
-          .register('service-worker.js')
+          .register('./service-worker.js')
           .then(reg => console.log("===== Service Worker: Successful Registration ====="))
           .catch(error => console.log(`===== Service Worker: Failed Registration | Error: ${error} =====`));
       });
     }
 
     const backgroundImagesArray = {
-      "light_blue": "url('lightblue.jpg')",
-      "light_gold": "url('lightgold.jpg')"
+      "light_blue": "url('./lightblue.jpg')",
+      "light_gold": "url('./lightgold.jpg')"
     };
 
     const selectElement = document.getElementById("select_element");
