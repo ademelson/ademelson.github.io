@@ -16,8 +16,8 @@
        techniques used by native apps to resolve these issues. PWA sites are reliable, fast and
        engaging. 
     </p>
-    <label for="background_color">Select The Background Color:</label>
-    <select name="background_color">
+    <label for="select_element">Select The Background Color:</label>
+    <select id="select_element" name="select_element">
         <option value="light_blue">Light Blue</option>
         <option value="light_gold">Light Gold</option>
     </select>    
@@ -28,10 +28,21 @@
       window.addEventListener('load',() => {
         navigator.serviceWorker
           .register('service-worker.js')
-          .then(reg => console.log(`Service Worker ${reg} | ${typeof reg}Now Registered`))
-          .catch(error => console.log(`Service Worker Error: ${error}`));
+          .then(reg => console.log("===== Service Worker: Successful Registration ====="))
+          .catch(error => console.log(`===== Service Worker: Failed Registration | Error: ${error} =====`));
       });
     }
+
+    const backgroundImagesArray = {
+      "light_blue": "url('lightblue.jpg')",
+      "light_gold": "url('lightgold.jpg')"
+    };
+
+    const selectElement = document.getElementById("select_element");
+    selectElement.addEventListener('change',event => {
+      let value = event.target.value;
+      document.body.style.backgroundImage = backgroundImagesArray[value];
+    });  
   </script>
 
 </body>
