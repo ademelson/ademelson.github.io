@@ -1,11 +1,9 @@
 const cacheName = "Homework4_Part2_v1";
-const cacheAssets = ['Attoni_Demel_Homework4_Part2.html','lightblue.jpg','lightgold.jpg']; 
-                /*
+const cacheAssets = ['Attoni_Demel_Homework4_Part2.html','lightblue.jpg','lightgold.jpg',
                      "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css",
                      "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js",
                      "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"
                     ];
-                    */
 
 self.addEventListener('install',(event) => {
     console.log("================ Service Worker Installation: Starting ================");
