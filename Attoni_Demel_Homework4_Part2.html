@@ -24,15 +24,6 @@
   </div>
   
   <script>
-    if("serviceWorker" in navigator){
-      window.addEventListener('load',() => {
-        navigator.serviceWorker
-          .register('./service-worker.js')
-          .then(reg => console.log("===== Service Worker: Successful Registration ====="))
-          .catch(error => console.log(`===== Service Worker: Failed Registration | Error: ${error} =====`));
-      });
-    }
-
     const backgroundImagesArray = {
       "light_blue": "url('./lightblue.jpg')",
       "light_gold": "url('./lightgold.jpg')"
@@ -43,6 +34,16 @@
       let value = event.target.value;
       document.body.style.backgroundImage = backgroundImagesArray[value];
     });  
+    /*
+    if("serviceWorker" in navigator){
+      window.addEventListener('load',() => {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(reg => console.log("===== Service Worker: Successful Registration ====="))
+          .catch(error => console.log(`===== Service Worker: Failed Registration | Error: ${error} =====`));
+      });
+    }
+    */
   </script>
 
 </body>
