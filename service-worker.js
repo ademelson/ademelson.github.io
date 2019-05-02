@@ -6,81 +6,35 @@ const cacheAssets = ['Attoni_Demel_Homework4_Part2.html','lightblue.jpg','lightg
                     ];
 
 self.addEventListener('install',(event) => {
-    console.log("================ Service Worker Installation: Starting ================");
+    console.log("==== [Service Worker] Installation Starting ====");
 
     event.waitUntil(
         caches.open('Homework4_Part2_v1')
               .then(cache => {
-                  console.log("---------------- Service Worker Installation: Cahing Files -------------");
+                  console.log("==== [Service Worker] Cashing New Resources During Installation ====");
                   cache.addAll(cacheAssets);
               })
               .then(() => self.skipWaiting)
               .catch(error => {
-                  console.log(`----------------- Service Worker Installing: Error Message: ${error} --------------`);
+                  console.log(`==== [Service Worker] Installing: Error Message: ${error} ====`);
               })
     );
-    console.log("================ Service Worker Installation: Completed ================");
+    console.log("==== [Service Worker] Installation: Completed ====");
 });
 
 self.addEventListener('activate',(event) => {
-    console.log("====================== Service Worker Activation =====================");
+    console.log("==== [Service Worker] Activation Completed ====");
 });
-
-/*
-self.addEventListener('fetch', event => {
-    console.log("Fetching Resource: ");
-    event.respondWith(
-       fetch(event.request)
-       .catch(() => fetch(caches.match(event.reques))));
-});
-*/
-
-/*
-self.addEventListener('fetch',event => {
-    console.log("================ Fetching Operation: ===================");
-    event.respondWith(
-        caches.match(event.request)
-        .then(response1 => {
-            console.log(`===== Service Worker: Fetching From Cache | Resource: ${event.request.url}`);
-            return response1;})
-        .catch( () => {
-            console.log(`===== Service Worker: Fetching From Network | Resource: ${event.request.url}`)
-            return fetch(event.request);
-        })
-    );
-});
-*/
-
-/*
-self.addEventListener('fetch',event => {
-    console.log("================ Fetching Operation: ===================");
-    event.respondWith(
-        caches.match(event.request)
-        .then(response1 => {
-            console.log(`===== Service Worker: Fetching From Cache | Resource: ${event.request.url}`);
-            return response1 || fetch(event.request)
-        })
-    );
-});
-
-    });})
-        .catch( () => {
-            console.log(`===== Service Worker: Fetching From Network | Resource: ${event.request.url}`)
-            return fetch(event.request);
-        })
-    );
-});
-*/
-
 
 self.addEventListener('fetch', function(e) {
     e.respondWith(
       caches.match(e.request).then(function(r) {
-        console.log('[Service Worker] Fetching resource: '+ e.request.url);
+        r && console.log('==== [Service Worker] Fetching Resource From Cache: '+ e.request.url);
         return r || fetch(e.request).then(response => {
           return caches.open(cacheName).then(function(cache) {
-            console.log('[Service Worker] Caching new resource: '+ e.request.url);
+            console.log('==== [Service Worker] Cashing New Resource From Network: '+ e.request.url);
             cache.put(e.request, response.clone());
+            console.log('==== [Service Worker] Fetching Resource From Network: '+ e.request.url);
             return response;
           });
         });
