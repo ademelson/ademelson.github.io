@@ -32,8 +32,7 @@
 
     const selectElement = document.getElementById("select_element");
     selectElement.addEventListener('change',event => {
-      let value = event.target.value;
-      document.body.style.backgroundImage = backgroundImagesArray[value];
+      document.body.style.backgroundImage = backgroundImagesArray[event.target.value];
     });  
   
     if("serviceWorker" in navigator){
