@@ -17,7 +17,7 @@
   crossorigin=""></script>
 
   <style>
-    #user_location { height: 300px }
+    #user_location { height: 600px }
   </style>
 
 </head>
@@ -57,28 +57,35 @@
        navigator.geolocation.getCurrentPosition(processLocation,processErrorMessage);
         
        function processLocation(position)
-       {
-           let latitude = position.coords.latitude;
-           let longitude = position.coords.longitude;
-           document.getElementById("latitude").innerHTML = `Your Current Latitude Is: ${latitude}`;
-           document.getElementById("longitude").innerHTML = `Your Current Longitude Is: ${longitude}`;
+       {   
+           let business_latitude = 37.761642;
+           let business_longitude = -122.461075;
+           let business_coordinates = [business_latitude,business_longitude];
+
+           let user_latitude = position.coords.latitude;
+           let user_longitude = position.coords.longitude;
+           let user_coordinates = [user_latitude,user_longitude];
+
+           let map_center_latitude = (business_latitude + user_latitude) / 2;
+           let map_center_longitude = (business_longitude + user_longitude) / 2;
+           let map_center_coordinates = [map_center_latitude,map_center_longitude];
+
+           document.getElementById("latitude").innerHTML = `Your Current Latitude Is: ${user_latitude}`;
+           document.getElementById("longitude").innerHTML = `Your Current Longitude Is: ${user_longitude}`;
            
-           var mymap = L.map('user_location').setView([latitude,longitude], 15)
+           let myMap = L.map('user_location').setView(map_center_coordinates,10);
          
            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-           maxZoom: 18,
+           maxZoom: 10,
            id: 'mapbox.streets',
            accessToken: 'pk.eyJ1IjoiYWRlbWVsc29uIiwiYSI6ImNqdjM4NXlqNjJjMzAzeXNkbWk4ZW1ncjcifQ.uu5WoCBAOrJcPnFtya_AAg'
-           }).addTo(mymap);
+           }).addTo(myMap);
 
-           var popup = L.popup();
-   
-           function MapClick(e) {
-               popup.setLatLng(e.latlng).setContent("Map Loaded At: " + e.latlng.toString()).openOn(mymap);
-           }
-   
-           mymap.on('load', MapClick);
+           let business_marker = L.marker(business_coordinates).bindPopup("Business Location / Your Destination ");
+           let user_marker = L.marker(user_coordinates).bindPopup("Your Current Position");
+
+           L.layerGroup([business_marker,user_marker]).addTo(myMap);
         }
         
        function processErrorMessage(error)
